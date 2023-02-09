@@ -29,4 +29,14 @@ const userSchema = new mongoose.Schema(
     { timestamps: true }
 )
 
+
+userSchema.virtual("hash")
+    .set(function (v) {
+        this.name = v;
+    })
+    .get(function () {
+        return this.name
+    })
+
+
 module.exports = mongoose.model("User", userSchema)
